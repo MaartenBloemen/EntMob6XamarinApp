@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using DataProcessor;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using Plugin.BLE.Abstractions.Contracts;
@@ -71,36 +72,93 @@ namespace SensorTagMvvm.ViewModels
             {
                 services = await device.GetServicesAsync();
             }
-            GetTempService();
+            //GetTempService();
+            //GetBarometerService();
+            GetHumidityService();
+            //GetOpticalService();
         }
 
         private async void GetTempService()
         {
             var service = services.FirstOrDefault(s => s.Id.Equals(Guid.Parse("f000aa00-0451-4000-b000-000000000000")));
-            var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa01-0451-4000-b000-000000000000"));
-            await characteristic.ReadAsync();
-            string CharacteristicValue = characteristic?.Value.ToHexString().Replace("-", " ");
-            var bytes = GetBytes(CharacteristicValue);
-            Debug.WriteLine("test");
+            var done = await TurnServiceOn(service, Guid.Parse("f000aa02-0451-4000-b000-000000000000"));
+            if (done)
+            {
+                var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa01-0451-4000-b000-000000000000"));
+                characteristic.ValueUpdated += (o, args) =>
+                {
+                    var bytes = args.Characteristic.Value;
+                    TemperatureData = "Temp=" + Converter.IRTemperature(bytes);
+                };
+
+                await characteristic.StartUpdatesAsync();
+            }
         }
 
         private async void GetHumidityService()
         {
             var service = services.FirstOrDefault(s => s.Id.Equals(Guid.Parse("f000aa20-0451-4000-b000-000000000000")));
-            var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa21-0451-4000-b000-000000000000"));
-            var bytes = await characteristic.ReadAsync();
+            var done = await TurnServiceOn(service, Guid.Parse("f000aa22-0451-4000-b000-000000000000"));
+            if (done)
+            {
+                var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa21-0451-4000-b000-000000000000"));
+                characteristic.ValueUpdated += (o, args) =>
+                {
+                    var bytes = args.Characteristic.Value;
+                    TemperatureData = "Humidity=" + Converter.Humidity(bytes);
+                };
+
+                await characteristic.StartUpdatesAsync();
+            }
         }
 
         private async void GetBarometerService()
         {
             var service = services.FirstOrDefault(s => s.Id.Equals(Guid.Parse("f000aa40-0451-4000-b000-000000000000")));
-            var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa41-0451-4000-b000-000000000000"));
-            var bytes = await characteristic.ReadAsync();
+            var done = await TurnServiceOn(service, Guid.Parse("f000aa42-0451-4000-b000-000000000000"));
+            if (done)
+            {
+                var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa41-0451-4000-b000-000000000000"));
+                characteristic.ValueUpdated += (o, args) =>
+                {
+                    var bytes = args.Characteristic.Value;
+                    TemperatureData = "Barometer=" + Converter.Barometer(bytes);
+                };
+
+                await characteristic.StartUpdatesAsync();
+            }
         }
 
         private async void GetOpticalService()
         {
             var service = services.FirstOrDefault(s => s.Id.Equals(Guid.Parse("f000aa70-0451-4000-b000-000000000000")));
+            var done = await TurnServiceOn(service, Guid.Parse("f000aa72-0451-4000-b000-000000000000"));
+            if (done)
+            {
+                var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa71-0451-4000-b000-000000000000"));
+                characteristic.ValueUpdated += (o, args) =>
+                {
+                    var bytes = args.Characteristic.Value;
+                    TemperatureData = "Lux=" + Converter.Lux(bytes);
+                };
+
+                await characteristic.StartUpdatesAsync();
+            }
+        }
+
+        private async System.Threading.Tasks.Task<bool> TurnServiceOn(IService Service, Guid CharacteristicId)
+        {
+            try
+            {
+                var characteristic = await Service.GetCharacteristicAsync(CharacteristicId);
+                await characteristic.WriteAsync(GetBytes("1"));
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         private static byte[] GetBytes(string text)

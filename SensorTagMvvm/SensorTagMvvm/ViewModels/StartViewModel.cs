@@ -100,15 +100,24 @@ namespace SensorTagMvvm.ViewModels
 
         private async void Connect(IDevice device)
         {
-            try
+            if (
+                await
+                    Mvx.Resolve<IUserInteraction>().ConfirmAsync("Do you want to connect to this device?"))
             {
-                await adapter.ConnectToDeviceAsync(device);
-                Debug.WriteLine("Connected");
-                ShowViewModel<ConnectedViewModel>(new DeviceParameters() { DeviceId = device.Id, DeviceName = device.Name });
-            }
-            catch (DeviceConnectionException e)
-            {
-                Debug.WriteLine("Something went wrong...");
+                try
+                {
+                    await adapter.ConnectToDeviceAsync(device);
+                    Debug.WriteLine("Connected");
+                    ShowViewModel<ConnectedViewModel>(new DeviceParameters()
+                    {
+                        DeviceId = device.Id,
+                        DeviceName = device.Name
+                    });
+                }
+                catch (DeviceConnectionException e)
+                {
+                    Debug.WriteLine("Something went wrong...");
+                }
             }
         }
 

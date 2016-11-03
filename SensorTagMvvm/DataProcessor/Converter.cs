@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataProcessor
 {
-    class Converter
+    public class Converter
     {
         public static double AmbientTemperature(byte[] bytes)
         {
