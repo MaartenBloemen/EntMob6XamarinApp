@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Android.App;
+using Android.Bluetooth;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
@@ -24,6 +26,12 @@ namespace SensorTagMvvm.ViewModels
     {
         private Plugin.BLE.Abstractions.Contracts.IAdapter adapter = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IAdapter>();
         private IList<IService> services;
+
+        public IList<double> TemperaturesList = new List<double>();
+        public IList<double> HumidityList = new List<double>();
+        public IList<double> BarometerList = new List<double>();
+        public IList<double> OpticalList = new List<double>();
+
         public ConnectedViewModel()
         {
         }
@@ -34,11 +42,11 @@ namespace SensorTagMvvm.ViewModels
             GetServices();
         }
 
-        public void Init(DeviceParameters connected_device)
+        public void Init(DeviceParameters connectedDevice)
         {
-            Debug.WriteLine(connected_device);
-            DeviceId = connected_device.DeviceId;
-            DeviceName = "Device name: " + connected_device.DeviceName;
+            Debug.WriteLine(connectedDevice);
+            DeviceId = connectedDevice.DeviceId;
+            DeviceName = "Device name: " + connectedDevice.DeviceName;
         }
 
         private Guid _deviceId;
@@ -65,6 +73,30 @@ namespace SensorTagMvvm.ViewModels
             set { _temperatureData = value; RaisePropertyChanged(() => TemperatureData); }
         }
 
+        private string _humidityData;
+
+        public string HumidityData
+        {
+            get { return _humidityData; }
+            set { _humidityData = value; RaisePropertyChanged(() => HumidityData); }
+        }
+
+        private string _barometerData;
+
+        public string BarometerData
+        {
+            get { return _barometerData; }
+            set { _barometerData = value; RaisePropertyChanged(() => BarometerData); }
+        }
+
+        private string _opticalData;
+
+        public string OpticalData
+        {
+            get { return _opticalData; }
+            set { _opticalData = value; RaisePropertyChanged(() => OpticalData); }
+        }
+
         private async void GetServices()
         {
             IDevice device = adapter.ConnectedDevices.FirstOrDefault(d => d.Id.Equals(_deviceId));
@@ -72,10 +104,10 @@ namespace SensorTagMvvm.ViewModels
             {
                 services = await device.GetServicesAsync();
             }
-            //GetTempService();
-            //GetBarometerService();
-            GetHumidityService();
-            //GetOpticalService();
+            new System.Threading.Thread(new System.Threading.ThreadStart(GetTempService)).Start();
+            new System.Threading.Thread(new System.Threading.ThreadStart(GetHumidityService)).Start();
+            new System.Threading.Thread(new System.Threading.ThreadStart(GetBarometerService)).Start();
+            new System.Threading.Thread(new System.Threading.ThreadStart(GetOpticalService)).Start();
         }
 
         private async void GetTempService()
@@ -89,6 +121,7 @@ namespace SensorTagMvvm.ViewModels
                 {
                     var bytes = args.Characteristic.Value;
                     TemperatureData = "Temp=" + Converter.IRTemperature(bytes);
+                    TemperaturesList.Add(Converter.IRTemperature(bytes));
                 };
 
                 await characteristic.StartUpdatesAsync();
@@ -105,7 +138,8 @@ namespace SensorTagMvvm.ViewModels
                 characteristic.ValueUpdated += (o, args) =>
                 {
                     var bytes = args.Characteristic.Value;
-                    TemperatureData = "Humidity=" + Converter.Humidity(bytes);
+                    HumidityData = "Humidity=" + Converter.Humidity(bytes);
+                    HumidityList.Add(Converter.Humidity(bytes));
                 };
 
                 await characteristic.StartUpdatesAsync();
@@ -116,13 +150,15 @@ namespace SensorTagMvvm.ViewModels
         {
             var service = services.FirstOrDefault(s => s.Id.Equals(Guid.Parse("f000aa40-0451-4000-b000-000000000000")));
             var done = await TurnServiceOn(service, Guid.Parse("f000aa42-0451-4000-b000-000000000000"));
+            Debug.WriteLine("test");
             if (done)
             {
                 var characteristic = await service.GetCharacteristicAsync(Guid.Parse("f000aa41-0451-4000-b000-000000000000"));
                 characteristic.ValueUpdated += (o, args) =>
                 {
                     var bytes = args.Characteristic.Value;
-                    TemperatureData = "Barometer=" + Converter.Barometer(bytes);
+                    BarometerData = "Barometer=" + Converter.Barometer(bytes);
+                    BarometerList.Add(Converter.Barometer(bytes));
                 };
 
                 await characteristic.StartUpdatesAsync();
@@ -139,18 +175,19 @@ namespace SensorTagMvvm.ViewModels
                 characteristic.ValueUpdated += (o, args) =>
                 {
                     var bytes = args.Characteristic.Value;
-                    TemperatureData = "Lux=" + Converter.Lux(bytes);
+                    OpticalData = "Lux=" + Converter.Lux(bytes);
+                    OpticalList.Add(Converter.Lux(bytes));
                 };
 
                 await characteristic.StartUpdatesAsync();
             }
         }
 
-        private async System.Threading.Tasks.Task<bool> TurnServiceOn(IService Service, Guid CharacteristicId)
+        private async System.Threading.Tasks.Task<bool> TurnServiceOn(IService service, Guid characteristicId)
         {
             try
             {
-                var characteristic = await Service.GetCharacteristicAsync(CharacteristicId);
+                var characteristic = await service.GetCharacteristicAsync(characteristicId);
                 await characteristic.WriteAsync(GetBytes("1"));
                 return true;
             }

@@ -23,4 +23,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         local:MvxBind="Text TemperatureData" />
+  <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Text HumidityData" />
+  <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Text BarometerData" />
+  <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Text OpticalData" />
 </LinearLayout>
