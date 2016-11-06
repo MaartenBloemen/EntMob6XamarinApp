@@ -46,6 +46,7 @@
             p1:layout_height="wrap_content"
             p1:layout_span="2"
             p1:layout_weight="1"
-            p1:id="@+id/button1" />
+            p1:id="@+id/button1"
+            local:MvxBind="Click ContinueCommand;Enabled HasInternetAccess" />
     </TableRow>
 </TableLayout>

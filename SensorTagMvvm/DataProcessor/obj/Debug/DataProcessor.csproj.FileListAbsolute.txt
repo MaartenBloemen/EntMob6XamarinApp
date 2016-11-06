@@ -1,0 +1,4 @@
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.pdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.pdb

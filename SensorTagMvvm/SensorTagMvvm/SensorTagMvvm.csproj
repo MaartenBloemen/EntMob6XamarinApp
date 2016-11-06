@@ -139,6 +139,7 @@
     <Compile Include="Services\Bluetooth.cs" />
     <Compile Include="Services\ConfirmThreeButtonsResponse.cs" />
     <Compile Include="Services\Converter.cs" />
+    <Compile Include="Services\DeviceListParameters.cs" />
     <Compile Include="Services\DeviceParameters.cs" />
     <Compile Include="Services\IBluetooth.cs" />
     <Compile Include="Services\InputResponse.cs" />
@@ -184,6 +185,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\red_square.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bars_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bars_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bars_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bars_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bars_4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

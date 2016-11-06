@@ -29,6 +29,8 @@ namespace SensorTagMvvm.ViewModels
             CheckConnectivity();
         }
 
+        public IMvxCommand ContinueCommand => new MvxCommand(() => ShowViewModel<StartViewModel>());
+
         private int _isConnected;
 
         public int IsConnected
@@ -43,6 +45,14 @@ namespace SensorTagMvvm.ViewModels
         {
             get { return _internetAccess; }
             set { _internetAccess = value; RaisePropertyChanged(() => InternetAccess); }
+        }
+
+        private bool _hasInternetAccess;
+
+        public bool HasInternetAccess
+        {
+            get { return _hasInternetAccess; }
+            set { _hasInternetAccess = value; RaisePropertyChanged(()=>HasInternetAccess); }
         }
 
         private void CheckConnectivity()
@@ -77,10 +87,12 @@ namespace SensorTagMvvm.ViewModels
             if (await _connectivity.IsRemoteReachable("google.com"))
             {
                 InternetAccess = Resource.Drawable.green_square;
+                HasInternetAccess = true;
             }
             else
             {
                 InternetAccess = Resource.Drawable.red_square;
+                HasInternetAccess = false;
             }
         }
     }

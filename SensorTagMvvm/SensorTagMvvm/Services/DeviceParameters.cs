@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace SensorTagMvvm.Services
 {
-    class DeviceParameters
+    public class DeviceParameters
     {
         public Guid DeviceId { get; set; }
         public string DeviceName { get; set; }

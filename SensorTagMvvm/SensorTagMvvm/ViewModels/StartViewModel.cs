@@ -57,14 +57,14 @@ namespace SensorTagMvvm.ViewModels
                     {
                         try
                         {
-                            Debug.WriteLine("3");
+                            //Debug.WriteLine("3");
                             var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
                             if (status != PermissionStatus.Granted)
                             {
-                                Debug.WriteLine("4");
+                                //Debug.WriteLine("4");
                                 if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
                                 {
-                                    Debug.WriteLine("5");
+                                    //Debug.WriteLine("5");
                                 }
 
                                 var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
@@ -74,13 +74,13 @@ namespace SensorTagMvvm.ViewModels
 
                             if (status == PermissionStatus.Granted)
                             {
-                                Debug.WriteLine("6");
+                                //Debug.WriteLine("6");
                                 ScanStatus = "Scanning for devices...";
                                 GetBluetoothDevices();
                             }
                             else if (status != PermissionStatus.Unknown)
                             {
-                                Debug.WriteLine("7");
+                                //Debug.WriteLine("7");
                             }
                         }
                         catch (Exception ex)
@@ -100,10 +100,11 @@ namespace SensorTagMvvm.ViewModels
             }
         }
 
-        public IMvxCommand ConnectCommand => new MvxCommand<IDevice>(Connect);
+        public IMvxCommand ConnectCommand => new MvxCommand<DeviceListParameters>(Connect);
 
-        private async void Connect(IDevice device)
+        private async void Connect(DeviceListParameters parameters)
         {
+            IDevice device = parameters.Device;
             if (
                 await
                     Mvx.Resolve<IUserInteraction>().ConfirmAsync("Do you want to connect to this device?"))
@@ -111,7 +112,7 @@ namespace SensorTagMvvm.ViewModels
                 try
                 {
                     await adapter.ConnectToDeviceAsync(device);
-                    Debug.WriteLine("Connected");
+                    //Debug.WriteLine("Connected");
                     ShowViewModel<ConnectedViewModel>(new DeviceParameters()
                     {
                         DeviceId = device.Id,
@@ -134,9 +135,9 @@ namespace SensorTagMvvm.ViewModels
 
         }
 
-        private List<IDevice> _deviceList = new List<IDevice>();
+        private List<DeviceListParameters> _deviceList = new List<DeviceListParameters>();
 
-        public List<IDevice> DeviceList
+        public List<DeviceListParameters> DeviceList
         {
             get { return _deviceList; }
             set { _deviceList = value; RaisePropertyChanged(() => DeviceList); }
@@ -152,12 +153,34 @@ namespace SensorTagMvvm.ViewModels
 
         private async void GetBluetoothDevices()
         {
-            List<IDevice> deviceList = new List<IDevice>();
-            adapter.DeviceDiscovered += (s, a) => deviceList.Add(a.Device);
+            List<DeviceListParameters> deviceList = new List<DeviceListParameters>();
+            adapter.DeviceDiscovered += (s, a) => deviceList.Add(new DeviceListParameters() { Device = a.Device, DeviceName = a.Device.Name, DeviceRssi = GetRssi(a.Device.Rssi) });
             await adapter.StartScanningForDevicesAsync();
-            deviceList.RemoveAll(device => (device.Name == null) && !(device.Id.ToString().Contains("b0b448")));
-            DeviceList = deviceList.OrderBy(d => d.Rssi).ToList();
+            deviceList.RemoveAll(device => (device.DeviceName == null) && !(device.Device.Id.ToString().Contains("b0b448")));
+            DeviceList = deviceList.OrderBy(d => d.Device.Rssi).ToList();
             ScanStatus = deviceList.Count == 0 ? "No devices found" : "Available devices:";
+        }
+
+        private int GetRssi(int rssi)
+        {
+            var quality = 2 * (rssi + 100);
+            if (quality > 90)
+            {
+                return Resource.Drawable.bars_4;
+            }
+            if (quality < 90 && quality > 80)
+            {
+                return Resource.Drawable.bars_3;
+            }
+            if (quality < 80 && quality > 60)
+            {
+                return Resource.Drawable.bars_2;
+            }
+            if (quality < 60 && quality > 40)
+            {
+                return Resource.Drawable.bars_1;
+            }
+            return Resource.Drawable.bars_0;
         }
 
         private void GetBluetoothStatus()
