@@ -2,6 +2,10 @@ SensorTagMvvm.View.ConnectedView, SensorTagMvvm;md5aee216b4341abf8a3db703d86482f
 SensorTagMvvm.View.ConnectedView, SensorTagMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5aee216b4341abf8a3db703d86482f0c7.ConnectedView
 SensorTagMvvm.View.ConnectedView;md5aee216b4341abf8a3db703d86482f0c7.ConnectedView
 sensortagmvvm.view.ConnectedView;md5aee216b4341abf8a3db703d86482f0c7.ConnectedView
+SensorTagMvvm.View.NoInternetView, SensorTagMvvm;md5aee216b4341abf8a3db703d86482f0c7.NoInternetView
+SensorTagMvvm.View.NoInternetView, SensorTagMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5aee216b4341abf8a3db703d86482f0c7.NoInternetView
+SensorTagMvvm.View.NoInternetView;md5aee216b4341abf8a3db703d86482f0c7.NoInternetView
+sensortagmvvm.view.NoInternetView;md5aee216b4341abf8a3db703d86482f0c7.NoInternetView
 SensorTagMvvm.View.StartView, SensorTagMvvm;md5aee216b4341abf8a3db703d86482f0c7.StartView
 SensorTagMvvm.View.StartView, SensorTagMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5aee216b4341abf8a3db703d86482f0c7.StartView
 SensorTagMvvm.View.StartView;md5aee216b4341abf8a3db703d86482f0c7.StartView
@@ -186,6 +190,10 @@ Plugin.BLE.Android.GattCallback, Plugin.BLE;md5407b0a64ff71a43ea27db4b16b320278.
 Plugin.BLE.Android.GattCallback, Plugin.BLE, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null;md5407b0a64ff71a43ea27db4b16b320278.GattCallback
 Plugin.BLE.Android.GattCallback;md5407b0a64ff71a43ea27db4b16b320278.GattCallback
 plugin.ble.android.GattCallback;md5407b0a64ff71a43ea27db4b16b320278.GattCallback
+Plugin.Connectivity.ConnectivityChangeBroadcastReceiver, Plugin.Connectivity;md5ebcbedcc9f4271e586379ac7977363a7.ConnectivityChangeBroadcastReceiver
+Plugin.Connectivity.ConnectivityChangeBroadcastReceiver, Plugin.Connectivity, Version=2.2.12.0, Culture=neutral, PublicKeyToken=null;md5ebcbedcc9f4271e586379ac7977363a7.ConnectivityChangeBroadcastReceiver
+Plugin.Connectivity.ConnectivityChangeBroadcastReceiver;md5ebcbedcc9f4271e586379ac7977363a7.ConnectivityChangeBroadcastReceiver
+plugin.connectivity.ConnectivityChangeBroadcastReceiver;md5ebcbedcc9f4271e586379ac7977363a7.ConnectivityChangeBroadcastReceiver
 Android.Support.V4.View.ViewPager/IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager+IOnPageChangeListenerImplementor, Xamarin.Android.Support.v4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor
 Android.Support.V4.View.ViewPager.IOnPageChangeListenerImplementor;mono.android.support.v4.view.ViewPager_OnPageChangeListenerImplementor

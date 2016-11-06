@@ -120,8 +120,8 @@ namespace SensorTagMvvm.ViewModels
                 characteristic.ValueUpdated += (o, args) =>
                 {
                     var bytes = args.Characteristic.Value;
-                    TemperatureData = "Temp=" + Converter.IRTemperature(bytes);
-                    TemperaturesList.Add(Converter.IRTemperature(bytes));
+                    TemperatureData = "Temp=" + Converter.IrTemperature(bytes);
+                    TemperaturesList.Add(Converter.IrTemperature(bytes));
                 };
 
                 await characteristic.StartUpdatesAsync();

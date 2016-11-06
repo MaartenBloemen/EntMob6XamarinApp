@@ -17,7 +17,7 @@ namespace DataProcessor
             return ambientTemp;
         }
 
-        public static double IRTemperature(byte[] bytes)
+        public static double IrTemperature(byte[] bytes)
         {
             //vb array
             //byte[] bytes = new byte[] { 0x04, 0x0A, 0x04, 0x0C };

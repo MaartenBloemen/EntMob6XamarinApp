@@ -17,7 +17,7 @@ namespace DataProcessor
             return ambientTemp;
         }
 
-        public static double IRTemperature(byte[] bytes)
+        public static double IrTemperature(byte[] bytes)
         {
             //vb array
             //byte[] bytes = new byte[] { 0x04, 0x0A, 0x04, 0x0C };
@@ -53,8 +53,8 @@ namespace DataProcessor
             // byte[] luxBytes = new byte[] { 0x00, 0x00, 0x4C, 0x49 };
 
             System.UInt16 e, m;
-            m = (System.UInt16)(BitConverter.ToUInt16(bytes, 2) & 0x0FFF);
-            e = (System.UInt16)((BitConverter.ToUInt16(bytes, 2) & 0xF000) >> 12);
+            m = (System.UInt16)(BitConverter.ToUInt16(bytes, 0) & 0x0FFF);
+            e = (System.UInt16)((BitConverter.ToUInt16(bytes, 0) & 0xF000) >> 12);
 
             return (m * (0.01 * Math.Pow(2.0, e)));
         }

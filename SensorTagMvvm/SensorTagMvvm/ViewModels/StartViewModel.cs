@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Android.App;
 using Android.Bluetooth;
 using Android.Content;
+using Android.Net;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -15,6 +17,8 @@ using MvvmCross.Platform;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using SensorTagMvvm.Services;
@@ -29,6 +33,9 @@ namespace SensorTagMvvm.ViewModels
         private Plugin.BLE.Abstractions.Contracts.IAdapter adapter = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IAdapter>();
         private BluetoothAdapter mBluetoothAdapter;
 
+
+        private readonly IConnectivity _connectivity = CrossConnectivity.Current;
+
         public StartViewModel(IBluetooth bluetooth)
         {
             _bluetooth = bluetooth;
@@ -37,7 +44,7 @@ namespace SensorTagMvvm.ViewModels
         public override void Start()
         {
             base.Start();
-            GetBluetoothStatus();
+            TestInternet();
         }
 
         public IMvxCommand ScanDevicesCommand
@@ -93,10 +100,7 @@ namespace SensorTagMvvm.ViewModels
             }
         }
 
-        public IMvxCommand ConnectCommand
-        {
-            get { return new MvxCommand<IDevice>(Connect); }
-        }
+        public IMvxCommand ConnectCommand => new MvxCommand<IDevice>(Connect);
 
         private async void Connect(IDevice device)
         {
@@ -163,6 +167,25 @@ namespace SensorTagMvvm.ViewModels
             ble.StateChanged += (s, e) =>
             {
                 BluetoothStatus = "Bluetooth: " + e.NewState.ToString();
+            };
+        }
+
+        private async void TestInternet()
+        {
+            if ((_connectivity.IsConnected) && (await _connectivity.IsRemoteReachable("google.com")))
+            {
+                GetBluetoothStatus();
+            }
+            else
+            {
+                ShowViewModel<NoInternetViewModel>();
+            }
+            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
+            {
+                if (!args.IsConnected)
+                {
+                    ShowViewModel<NoInternetViewModel>();
+                }
             };
         }
     }

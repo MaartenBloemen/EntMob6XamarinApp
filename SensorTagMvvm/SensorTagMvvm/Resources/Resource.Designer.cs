@@ -87,7 +87,13 @@ namespace SensorTagMvvm
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int green_square = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int red_square = 2130837506;
 			
 			static Drawable()
 			{
@@ -102,8 +108,8 @@ namespace SensorTagMvvm
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040004
-			public const int LstDevices = 2130968580;
+			// aapt resource value: 0x7f04000b
+			public const int LstDevices = 2130968587;
 			
 			// aapt resource value: 0x7f040000
 			public const int MvvmCrossTagId = 2130968576;
@@ -111,11 +117,32 @@ namespace SensorTagMvvm
 			// aapt resource value: 0x7f040001
 			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f040003
-			public const int TxtScanning = 2130968579;
+			// aapt resource value: 0x7f04000a
+			public const int TxtScanning = 2130968586;
+			
+			// aapt resource value: 0x7f040008
+			public const int button1 = 2130968584;
+			
+			// aapt resource value: 0x7f040004
+			public const int is_connected_image = 2130968580;
+			
+			// aapt resource value: 0x7f040009
+			public const int scan = 2130968585;
 			
 			// aapt resource value: 0x7f040002
-			public const int scan = 2130968578;
+			public const int tableLayout1 = 2130968578;
+			
+			// aapt resource value: 0x7f040003
+			public const int tableRow0 = 2130968579;
+			
+			// aapt resource value: 0x7f040005
+			public const int tableRow1 = 2130968581;
+			
+			// aapt resource value: 0x7f040007
+			public const int tableRow2 = 2130968583;
+			
+			// aapt resource value: 0x7f040006
+			public const int wifi_image = 2130968582;
 			
 			static Id()
 			{
@@ -137,7 +164,10 @@ namespace SensorTagMvvm
 			public const int device_connected = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int start_screen = 2130903042;
+			public const int no_internet = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int start_screen = 2130903043;
 			
 			static Layout()
 			{

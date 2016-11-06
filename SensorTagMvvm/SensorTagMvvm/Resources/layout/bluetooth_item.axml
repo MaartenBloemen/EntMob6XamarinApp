@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:p1="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="fill_parent"
+    p1:layout_height="fill_parent"
+    p1:id="@+id/tableLayout1">
+  <TableRow
+      p1:id="@+id/tableRow0">
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_column="0"
+        p1:layout_gravity="center_vertical"
+        p1:layout_weight="2"
+        p1:layout_marginLeft="8dp"
         local:MvxBind="Text Name" />
-<TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
+    <TextView
+        p1:textAppearance="?android:attr/textAppearanceLarge"
+        p1:layout_column="0"
+        p1:layout_gravity="center_vertical"
+        p1:layout_weight="2"
+        p1:layout_marginLeft="8dp"
         local:MvxBind="Text Rssi" />
-</LinearLayout>
+    <!--<ImageView
+        p1:layout_column="1"
+        p1:layout_weight="1"
+        p1:id="@+id/is_connected_image"
+        local:MvxBind="DrawableId Rssi" />-->
+  </TableRow>
+</TableLayout>

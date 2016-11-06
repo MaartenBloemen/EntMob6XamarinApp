@@ -3,10 +3,14 @@
   <Jars></Jars>
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\__library_projects__\MvvmCross.Binding.Droid\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\__library_projects__\Plugin.Connectivity\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
-  <ResolvedAssetDirectories />
+  <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\__library_projects__\Plugin.Connectivity\library_project_imports\assets</ResolvedAssetDirectory>
+  </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
     <ResolvedResourceDirectoryStamp>C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\__library_projects__\MvvmCross.Binding.Droid.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\__library_projects__\Plugin.Connectivity.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

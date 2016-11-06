@@ -22,6 +22,8 @@ C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Deb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Newtonsoft.Json.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.BLE.Abstractions.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.BLE.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.Connectivity.Abstractions.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.Connectivity.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.CurrentActivity.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.Permissions.Abstractions.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Plugin.Permissions.dll
