@@ -30,9 +30,7 @@ namespace SensorTagMvvm.ViewModels
     {
         private readonly IBluetooth _bluetooth;
 
-        private Plugin.BLE.Abstractions.Contracts.IAdapter adapter = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IAdapter>();
-        private BluetoothAdapter mBluetoothAdapter;
-
+        private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IAdapter>();
 
         private readonly IConnectivity _connectivity = CrossConnectivity.Current;
 
@@ -111,7 +109,7 @@ namespace SensorTagMvvm.ViewModels
             {
                 try
                 {
-                    await adapter.ConnectToDeviceAsync(device);
+                    await _adapter.ConnectToDeviceAsync(device);
                     //Debug.WriteLine("Connected");
                     ShowViewModel<ConnectedViewModel>(new DeviceParameters()
                     {
@@ -154,15 +152,16 @@ namespace SensorTagMvvm.ViewModels
         private async void GetBluetoothDevices()
         {
             List<DeviceListParameters> deviceList = new List<DeviceListParameters>();
-            adapter.DeviceDiscovered += (s, a) => deviceList.Add(new DeviceListParameters() { Device = a.Device, DeviceName = a.Device.Name, DeviceRssi = GetRssi(a.Device.Rssi) });
-            await adapter.StartScanningForDevicesAsync();
-            deviceList.RemoveAll(device => (device.DeviceName == null) && !(device.Device.Id.ToString().Contains("b0b448")));
-            DeviceList = deviceList.OrderBy(d => d.Device.Rssi).ToList();
+            _adapter.DeviceDiscovered += (s, a) => deviceList.Add(new DeviceListParameters() { Device = a.Device, DeviceName = a.Device.Name, DeviceRssi = GetRssi(a.Device.Rssi) });
+            await _adapter.StartScanningForDevicesAsync();
+            deviceList.RemoveAll(device => (device.DeviceName == null) && (!device.Device.Id.ToString().Contains("b0b448")));
+            DeviceList = deviceList.OrderByDescending(d => d.Device.Rssi).ToList();
             ScanStatus = deviceList.Count == 0 ? "No devices found" : "Available devices:";
         }
 
         private int GetRssi(int rssi)
         {
+            
             var quality = 2 * (rssi + 100);
             if (quality > 90)
             {
