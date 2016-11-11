@@ -38,7 +38,7 @@ namespace SensorTagMvvm.ViewModels
         public int IsConnected
         {
             get { return _isConnected; }
-            set { _isConnected = value; RaisePropertyChanged(()=>IsConnected); }
+            set { _isConnected = value; RaisePropertyChanged(() => IsConnected); }
         }
 
         private int _internetAccess;
@@ -54,7 +54,7 @@ namespace SensorTagMvvm.ViewModels
         public bool HasInternetAccess
         {
             get { return _hasInternetAccess; }
-            set { _hasInternetAccess = value; RaisePropertyChanged(()=>HasInternetAccess); }
+            set { _hasInternetAccess = value; RaisePropertyChanged(() => HasInternetAccess); }
         }
 
         private void CheckConnectivity()
