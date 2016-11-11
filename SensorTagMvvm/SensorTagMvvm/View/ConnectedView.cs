@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using MvvmCross.Droid.Views;
 using SensorTagMvvm.ViewModels;
+using Debug = System.Diagnostics.Debug;
 
 namespace SensorTagMvvm.View
 {

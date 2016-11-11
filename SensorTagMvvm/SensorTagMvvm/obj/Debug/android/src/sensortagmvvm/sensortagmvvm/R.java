@@ -83,6 +83,7 @@ containing a value of this type.
         public static final int TxtScanning=0x7f04000a;
         public static final int button1=0x7f040008;
         public static final int is_connected_image=0x7f040004;
+        public static final int refresher=0x7f04000c;
         public static final int scan=0x7f040009;
         public static final int tableLayout1=0x7f040002;
         public static final int tableRow0=0x7f040003;
@@ -95,6 +96,7 @@ containing a value of this type.
         public static final int device_connected=0x7f030001;
         public static final int no_internet=0x7f030002;
         public static final int start_screen=0x7f030003;
+        public static final int test=0x7f030004;
     }
     public static final class string {
         public static final int ApplicationName=0x7f050001;

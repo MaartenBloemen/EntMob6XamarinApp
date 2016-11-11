@@ -141,6 +141,9 @@ namespace SensorTagMvvm
 			// aapt resource value: 0x7f040004
 			public const int is_connected_image = 2130968580;
 			
+			// aapt resource value: 0x7f04000c
+			public const int refresher = 2130968588;
+			
 			// aapt resource value: 0x7f040009
 			public const int scan = 2130968585;
 			
@@ -183,6 +186,9 @@ namespace SensorTagMvvm
 			
 			// aapt resource value: 0x7f030003
 			public const int start_screen = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int test = 2130903044;
 			
 			static Layout()
 			{

@@ -10,6 +10,14 @@ SensorTagMvvm.View.StartView, SensorTagMvvm;md5aee216b4341abf8a3db703d86482f0c7.
 SensorTagMvvm.View.StartView, SensorTagMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5aee216b4341abf8a3db703d86482f0c7.StartView
 SensorTagMvvm.View.StartView;md5aee216b4341abf8a3db703d86482f0c7.StartView
 sensortagmvvm.view.StartView;md5aee216b4341abf8a3db703d86482f0c7.StartView
+SensorTagMvvm.View.TestView, SensorTagMvvm;md5aee216b4341abf8a3db703d86482f0c7.TestView
+SensorTagMvvm.View.TestView, SensorTagMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5aee216b4341abf8a3db703d86482f0c7.TestView
+SensorTagMvvm.View.TestView;md5aee216b4341abf8a3db703d86482f0c7.TestView
+sensortagmvvm.view.TestView;md5aee216b4341abf8a3db703d86482f0c7.TestView
+SensorTagMvvm.Services.MvxSwipeRefreshLayout, SensorTagMvvm;md53871c430096f722adf5ecd32685fdc23.MvxSwipeRefreshLayout
+SensorTagMvvm.Services.MvxSwipeRefreshLayout, SensorTagMvvm, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md53871c430096f722adf5ecd32685fdc23.MvxSwipeRefreshLayout
+SensorTagMvvm.Services.MvxSwipeRefreshLayout;md53871c430096f722adf5ecd32685fdc23.MvxSwipeRefreshLayout
+sensortagmvvm.services.MvxSwipeRefreshLayout;md53871c430096f722adf5ecd32685fdc23.MvxSwipeRefreshLayout
 MvvmCross.Binding.Droid.Views.MvxBaseListItemView, MvvmCross.Binding.Droid;md5bf0126c95bf9fc0db24c02c9adb4cfa7.MvxBaseListItemView
 MvvmCross.Binding.Droid.Views.MvxBaseListItemView, MvvmCross.Binding.Droid, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null;md5bf0126c95bf9fc0db24c02c9adb4cfa7.MvxBaseListItemView
 MvvmCross.Binding.Droid.Views.MvxBaseListItemView;md5bf0126c95bf9fc0db24c02c9adb4cfa7.MvxBaseListItemView

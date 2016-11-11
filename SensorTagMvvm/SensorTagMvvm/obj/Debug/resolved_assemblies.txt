@@ -1,10 +1,12 @@
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\SensorTagMvvm.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\DataProcessor.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Java.Interop.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Mono.Android.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Mono.Android.Export.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\mscorlib.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Core.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Net.Http.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.ServiceModel.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Xml.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Xml.Linq.dll
@@ -41,7 +43,6 @@ C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Deb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Reflection.Extensions.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Runtime.Serialization.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.ServiceModel.Internals.dll
-C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Net.Http.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Linq.Expressions.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.ObjectModel.dll
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Globalization.dll

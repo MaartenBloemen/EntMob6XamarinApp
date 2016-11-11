@@ -156,12 +156,17 @@ C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Deb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\Plugin.Connectivity.Abstractions.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\green_square.png
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\red_square.png
-C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\SensorTagMvvm.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\bars_0.png
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\bars_1.png
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\bars_2.png
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\bars_3.png
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\drawable\bars_4.png
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\SensorTagMvvm.csprojResolveAssemblyReference.cache
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\res\layout\test.xml
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\DataProcessor.dll
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\DataProcessor.pdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\SensorTagMvvm.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\DataProcessor.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\Java.Interop.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\Microsoft.CSharp.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\Mono.Android.dll.mdb
@@ -177,6 +182,7 @@ C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Deb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\System.ServiceModel.Internals.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\System.Xml.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\System.Xml.Linq.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\DataProcessor.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Java.Interop.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Microsoft.CSharp.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\Mono.Android.dll.mdb
@@ -204,6 +210,5 @@ C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Deb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\SensorTagMvvm.csprojResolveAssemblyReference.cache
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\obj\Debug\SensorTagMvvm.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\SensorTagMvvm\bin\Debug\SensorTagMvvm.dll.mdb

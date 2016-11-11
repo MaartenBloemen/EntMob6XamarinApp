@@ -99,6 +99,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "SensorTagMvvm.dll" comes first in this list. */
 		"SensorTagMvvm.dll",
+		"DataProcessor.dll",
 		"Java.Interop.dll",
 		"MvvmCross.Binding.dll",
 		"MvvmCross.Binding.Droid.dll",

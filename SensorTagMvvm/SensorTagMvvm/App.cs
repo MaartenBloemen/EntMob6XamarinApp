@@ -11,6 +11,8 @@ using Android.Views;
 using Android.Widget;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 using SensorTagMvvm.Services;
 using SensorTagMvvm.ViewModels;
 
@@ -23,6 +25,7 @@ namespace SensorTagMvvm
             Mvx.RegisterType<IBluetooth, Bluetooth>();
             Mvx.RegisterType<IUserInteraction, UserInteraction>();
             Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<StartViewModel>());
+            Mvx.RegisterSingleton<IConnectivity>(CrossConnectivity.Current);
         }
     }
 }

@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,17 +19,21 @@ using DataProcessor;
 using Java.Util;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
 using Plugin.BLE.Abstractions.Extensions;
 using SensorTagMvvm.Services;
 using Debug = System.Diagnostics.Debug;
+using IAdapter = Plugin.BLE.Abstractions.Contracts.IAdapter;
+using Timer = System.Threading.Timer;
 
 namespace SensorTagMvvm.ViewModels
 {
-    class ConnectedViewModel : MvxViewModel
+    public class ConnectedViewModel : MvxViewModel
     {
-        private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IAdapter>();
+        private IAdapter _adapter = Mvx.Resolve<IAdapter>();
 
         private IList<IService> _services;
 
@@ -38,6 +45,8 @@ namespace SensorTagMvvm.ViewModels
         public IList<double> BarometerList = new List<double>();
         public IList<double> OpticalList = new List<double>();
 
+        private Timer _apiCallTimer;
+
         public ConnectedViewModel()
         {
         }
@@ -46,6 +55,7 @@ namespace SensorTagMvvm.ViewModels
         {
             base.Start();
             GetServices();
+            InitApiTimer();
         }
 
         public void Init(DeviceParameters connectedDevice)
@@ -53,6 +63,15 @@ namespace SensorTagMvvm.ViewModels
             Debug.WriteLine(connectedDevice);
             DeviceId = connectedDevice.DeviceId;
             DeviceName = "Device name: " + connectedDevice.DeviceName;
+        }
+
+        private void InitApiTimer()
+        {
+            _apiCallTimer = new Timer(async e =>
+            {
+                var test = await RefreshDataAsync();
+                Debug.WriteLine(test);
+            }, null, 0, Convert.ToInt32(TimeSpan.FromSeconds(30).TotalMilliseconds));
         }
 
         private Guid _deviceId;
@@ -153,7 +172,7 @@ namespace SensorTagMvvm.ViewModels
             _characteristics.Add(readCharacteristic);
         }
 
-        private async System.Threading.Tasks.Task<bool> TurnServiceOn(IService service, Guid characteristicId)
+        private async Task<bool> TurnServiceOn(IService service, Guid characteristicId)
         {
             try
             {
@@ -170,7 +189,7 @@ namespace SensorTagMvvm.ViewModels
 
         private static byte[] GetBytes(string text)
         {
-            return text.Split(' ').Where(token => !string.IsNullOrEmpty(token)).Select(token => Convert.ToByte(token, 16)).ToArray();
+            return text.Split(' ').Where(token => !String.IsNullOrEmpty(token)).Select(token => Convert.ToByte(token, 16)).ToArray();
         }
 
         private async void WriteCharacteristics()
@@ -180,7 +199,7 @@ namespace SensorTagMvvm.ViewModels
                 var characteristic = _writeCharacteristics.Dequeue();
                 await characteristic.WriteAsync(GetBytes("1"));
             }
-            new System.Threading.Thread(new System.Threading.ThreadStart(ReadCharacteristics)).Start();
+            new Thread(new ThreadStart(ReadCharacteristics)).Start();
         }
 
         private async void ReadCharacteristics()
@@ -193,29 +212,60 @@ namespace SensorTagMvvm.ViewModels
                     var bytes = await characteristic.ReadAsync();
                     switch (i)
                     {
+
                         case 0:
                             var t = Converter.AmbientTemperature(bytes);
                             TemperatureData = "Temp: " + Math.Round(t, 2);
                             TemperaturesList.Add(t);
+                            //Debug.WriteLine(t);
                             break;
                         case 1:
                             var h = Converter.Humidity(bytes);
-                            HumidityData = "Humidity:" + Math.Round(h, 2); ;
+                            HumidityData = "Humidity:" + Math.Round(h, 2);
                             HumidityList.Add(h);
+                            //Debug.WriteLine(h);
                             break;
                         case 2:
                             var b = Converter.Barometer(bytes);
-                            BarometerData = "Barometer: " + Math.Round(b, 2); ;
+                            BarometerData = "Barometer: " + Math.Round(b, 2);
                             BarometerList.Add(b);
+                            //Debug.WriteLine(b);
                             break;
                         case 3:
                             var o = Converter.Lux(bytes);
-                            OpticalData = "Lux: " + Math.Round(o, 2); ;
+                            OpticalData = "Lux: " + Math.Round(o, 2);
                             OpticalList.Add(o);
+                            //Debug.WriteLine(o);
                             break;
                     }
                 }
             }
+        }
+
+        public async Task<JObject> RefreshDataAsync()
+        {
+            HttpClient client = new HttpClient();
+            var uri = new Uri("http://swapi.co/api/planets/1/");
+            var response = await client.GetAsync(uri);
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JObject.Parse(content);
+            }
+            return null;
+        }
+
+        public async Task<bool> PostDataList(List<object> item)
+        {
+            HttpClient client = new HttpClient();
+            var uri = new Uri("url here...");
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = null;
+            response = await client.PostAsync(uri, content);
+
+            return response.IsSuccessStatusCode;
         }
     }
 }

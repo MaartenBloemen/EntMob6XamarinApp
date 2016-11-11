@@ -32,11 +32,12 @@ namespace SensorTagMvvm.ViewModels
 
         private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter = Mvx.Resolve<Plugin.BLE.Abstractions.Contracts.IAdapter>();
 
-        private readonly IConnectivity _connectivity = CrossConnectivity.Current;
+        private readonly IConnectivity _connectivity;
 
-        public StartViewModel(IBluetooth bluetooth)
+        public StartViewModel(IBluetooth bluetooth, IConnectivity connectivity)
         {
             _bluetooth = bluetooth;
+            _connectivity = connectivity;
         }
 
         public override void Start()

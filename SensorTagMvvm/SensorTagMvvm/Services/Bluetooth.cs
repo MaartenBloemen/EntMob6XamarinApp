@@ -15,10 +15,10 @@ using Plugin.BLE.Abstractions.Contracts;
 
 namespace SensorTagMvvm.Services
 {
-    class Bluetooth : IBluetooth
+    public class Bluetooth : IBluetooth
     {
-        Plugin.BLE.Abstractions.Contracts.IAdapter adapter = CrossBluetoothLE.Current.Adapter;
-        BluetoothAdapter mBluetoothAdapter;
+        private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter = CrossBluetoothLE.Current.Adapter;
+        private BluetoothAdapter _mBluetoothAdapter;
 
         public async System.Threading.Tasks.Task<List<IDevice>> GetDevices(Plugin.BLE.Abstractions.Contracts.IAdapter adapter)
         {

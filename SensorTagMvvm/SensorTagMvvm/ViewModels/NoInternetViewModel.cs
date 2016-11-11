@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using MvvmCross.Binding.Droid.Views;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
 using Plugin.Connectivity;
 using Plugin.Connectivity.Abstractions;
 
@@ -18,9 +19,10 @@ namespace SensorTagMvvm.ViewModels
 {
     public class NoInternetViewModel : MvxViewModel
     {
-        private readonly IConnectivity _connectivity = CrossConnectivity.Current;
-        public NoInternetViewModel()
+        private readonly IConnectivity _connectivity;
+        public NoInternetViewModel(IConnectivity connectivity)
         {
+            _connectivity = connectivity;
         }
 
         public override void Start()
