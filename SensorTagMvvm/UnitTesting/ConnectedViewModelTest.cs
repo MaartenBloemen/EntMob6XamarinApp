@@ -38,7 +38,7 @@ namespace UnitTesting
             Assert.AreEqual(Guid.Parse("41697849-d8b1-47cc-b236-f674fb721b35"), viewModel.DeviceId);
         }
 
-        [Test]
+        /*[Test]
         public void TestConnectedViewModelTemperatureList()
         {
             ClearAll();
@@ -49,6 +49,6 @@ namespace UnitTesting
 
             Assert.AreEqual(5, viewModel.TemperaturesList.Count);
             Assert.AreEqual(10, viewModel.TemperaturesList[0]);
-        }
+        }*/
     }
 }

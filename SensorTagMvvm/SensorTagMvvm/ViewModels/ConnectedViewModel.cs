@@ -24,6 +24,8 @@ using Newtonsoft.Json.Linq;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
 using Plugin.BLE.Abstractions.Extensions;
+using SensorTagMvvm.DAL;
+using SensorTagMvvm.Domain;
 using SensorTagMvvm.Services;
 using Debug = System.Diagnostics.Debug;
 using IAdapter = Plugin.BLE.Abstractions.Contracts.IAdapter;
@@ -40,12 +42,14 @@ namespace SensorTagMvvm.ViewModels
         private Queue<ICharacteristic> _writeCharacteristics = new Queue<ICharacteristic>();
         private IList<ICharacteristic> _characteristics = new List<ICharacteristic>();
 
-        public IList<double> TemperaturesList = new List<double>();
-        public IList<double> HumidityList = new List<double>();
-        public IList<double> BarometerList = new List<double>();
-        public IList<double> OpticalList = new List<double>();
+        public List<Temperature> TemperaturesList = new List<Temperature>();
+        public List<Humidity> HumidityList = new List<Humidity>();
+        public List<AirPressure> BarometerList = new List<AirPressure>();
+        public List<Brightness> OpticalList = new List<Brightness>();
 
         private Timer _apiCallTimer;
+
+        private ISensorTagRepository _repository = Mvx.Resolve<ISensorTagRepository>();
 
         public ConnectedViewModel()
         {
@@ -67,10 +71,16 @@ namespace SensorTagMvvm.ViewModels
 
         private void InitApiTimer()
         {
-            _apiCallTimer = new Timer(async e =>
+            _apiCallTimer = new Timer(e =>
             {
-                var test = await RefreshDataAsync();
-                Debug.WriteLine(test);
+                _repository.PostTemperatureData(TemperaturesList);
+                _repository.PostHumidityData(HumidityList);
+                _repository.PostBarometerData(BarometerList);
+                _repository.PostOpticalData(OpticalList);
+                TemperaturesList.Clear();
+                HumidityList.Clear();
+                BarometerList.Clear();
+                OpticalList.Clear();
             }, null, 0, Convert.ToInt32(TimeSpan.FromSeconds(30).TotalMilliseconds));
         }
 
@@ -216,56 +226,30 @@ namespace SensorTagMvvm.ViewModels
                         case 0:
                             var t = Converter.AmbientTemperature(bytes);
                             TemperatureData = "Temp: " + Math.Round(t, 2);
-                            TemperaturesList.Add(t);
+                            TemperaturesList.Add(new Temperature() { ID = null, Measured = DateTime.Now, Value = (float)t });
                             //Debug.WriteLine(t);
                             break;
                         case 1:
                             var h = Converter.Humidity(bytes);
                             HumidityData = "Humidity:" + Math.Round(h, 2);
-                            HumidityList.Add(h);
+                            HumidityList.Add(new Humidity() { ID = null, Measured = DateTime.Now, Percentage = (float)h });
                             //Debug.WriteLine(h);
                             break;
                         case 2:
                             var b = Converter.Barometer(bytes);
                             BarometerData = "Barometer: " + Math.Round(b, 2);
-                            BarometerList.Add(b);
+                            BarometerList.Add(new AirPressure() { ID = null, Measured = DateTime.Now, Value = (float)b });
                             //Debug.WriteLine(b);
                             break;
                         case 3:
                             var o = Converter.Lux(bytes);
                             OpticalData = "Lux: " + Math.Round(o, 2);
-                            OpticalList.Add(o);
+                            OpticalList.Add(new Brightness() { ID = null, Measured = DateTime.Now, Value = (float)o });
                             //Debug.WriteLine(o);
                             break;
                     }
                 }
             }
-        }
-
-        public async Task<JObject> RefreshDataAsync()
-        {
-            HttpClient client = new HttpClient();
-            var uri = new Uri("http://swapi.co/api/planets/1/");
-            var response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                return JObject.Parse(content);
-            }
-            return null;
-        }
-
-        public async Task<bool> PostDataList(List<object> item)
-        {
-            HttpClient client = new HttpClient();
-            var uri = new Uri("url here...");
-            var json = JsonConvert.SerializeObject(item);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = null;
-            response = await client.PostAsync(uri, content);
-
-            return response.IsSuccessStatusCode;
         }
     }
 }

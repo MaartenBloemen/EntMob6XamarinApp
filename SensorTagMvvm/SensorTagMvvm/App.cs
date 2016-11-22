@@ -13,6 +13,7 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using Plugin.Connectivity;
 using Plugin.Connectivity.Abstractions;
+using SensorTagMvvm.DAL;
 using SensorTagMvvm.Services;
 using SensorTagMvvm.ViewModels;
 
@@ -24,6 +25,7 @@ namespace SensorTagMvvm
         {
             Mvx.RegisterType<IBluetooth, Bluetooth>();
             Mvx.RegisterType<IUserInteraction, UserInteraction>();
+            Mvx.RegisterType<ISensorTagRepository, SensorTagRepository>();
             Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<StartViewModel>());
             Mvx.RegisterSingleton<IConnectivity>(CrossConnectivity.Current);
         }

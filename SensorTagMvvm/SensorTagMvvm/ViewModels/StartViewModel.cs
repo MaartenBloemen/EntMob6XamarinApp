@@ -43,7 +43,8 @@ namespace SensorTagMvvm.ViewModels
         public override void Start()
         {
             base.Start();
-            TestInternet();
+            //TestInternet();
+            GetBluetoothStatus();
         }
 
         public IMvxCommand ScanDevicesCommand

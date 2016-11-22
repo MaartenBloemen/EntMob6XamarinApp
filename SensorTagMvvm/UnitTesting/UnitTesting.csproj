@@ -118,6 +118,14 @@
     <Compile Include="StartViewModelTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SensorTagMvvm.DAL\SensorTagMvvm.DAL.csproj">
+      <Project>{e6a5c104-849c-4c09-99e1-1c5490b27d7d}</Project>
+      <Name>SensorTagMvvm.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SensorTagMvvm.Domain\Domain.csproj">
+      <Project>{2abf857d-4b06-4718-9bf1-37414505631b}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SensorTagMvvm\SensorTagMvvm.csproj">
       <Project>{14c68886-7926-458a-91d7-0be29dba766a}</Project>
       <Name>SensorTagMvvm</Name>
