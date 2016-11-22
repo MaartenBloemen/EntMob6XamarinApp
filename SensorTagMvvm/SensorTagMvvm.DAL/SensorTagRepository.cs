@@ -13,6 +13,7 @@ namespace SensorTagMvvm.DAL
 {
     public class SensorTagRepository : ISensorTagRepository
     {
+        //TODO: rember to change IP address to correct one during the presentation (use cmd - ipconfig on laptop to find IP address.).
         const string API_BASE_URL = "http://192.168.43.60:8080";
         public async void PostTemperatureData(List<Temperature> temperatures)
         {
