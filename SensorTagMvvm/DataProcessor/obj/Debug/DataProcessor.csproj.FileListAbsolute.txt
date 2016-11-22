@@ -110,3 +110,11 @@ C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Deb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.dll.mdb
 C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\obj\Debug\DataProcessor.dll.mdb
+C:\Users\Maarten\Documents\GitHub\XamarinApp\SensorTagMvvm\DataProcessor\bin\Debug\DataProcessor.dll.mdb

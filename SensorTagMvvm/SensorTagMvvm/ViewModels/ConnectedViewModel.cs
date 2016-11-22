@@ -49,10 +49,11 @@ namespace SensorTagMvvm.ViewModels
 
         private Timer _apiCallTimer;
 
-        private ISensorTagRepository _repository = Mvx.Resolve<ISensorTagRepository>();
+        private readonly ISensorTagRepository _repository;
 
-        public ConnectedViewModel()
+        public ConnectedViewModel(ISensorTagRepository repository)
         {
+            _repository = repository;
         }
 
         public override void Start()
@@ -73,14 +74,18 @@ namespace SensorTagMvvm.ViewModels
         {
             _apiCallTimer = new Timer(e =>
             {
-                _repository.PostTemperatureData(TemperaturesList);
-                _repository.PostHumidityData(HumidityList);
-                _repository.PostBarometerData(BarometerList);
-                _repository.PostOpticalData(OpticalList);
+                List<Temperature> temperaturesCloneList = new List<Temperature>(TemperaturesList);
+                List<Humidity> humiditiesCloneList = new List<Humidity>(HumidityList);
+                List<AirPressure> barometerCloneList = new List<AirPressure>(BarometerList);
+                List<Brightness> opticalCloneList = new List<Brightness>(OpticalList);
                 TemperaturesList.Clear();
                 HumidityList.Clear();
                 BarometerList.Clear();
                 OpticalList.Clear();
+                _repository.PostTemperatureData(temperaturesCloneList);
+                _repository.PostHumidityData(humiditiesCloneList);
+                _repository.PostBarometerData(barometerCloneList);
+                _repository.PostOpticalData(opticalCloneList);
             }, null, 0, Convert.ToInt32(TimeSpan.FromSeconds(30).TotalMilliseconds));
         }
 
@@ -222,7 +227,6 @@ namespace SensorTagMvvm.ViewModels
                     var bytes = await characteristic.ReadAsync();
                     switch (i)
                     {
-
                         case 0:
                             var t = Converter.AmbientTemperature(bytes);
                             TemperatureData = "Temp: " + Math.Round(t, 2);

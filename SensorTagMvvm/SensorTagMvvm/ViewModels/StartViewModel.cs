@@ -43,8 +43,14 @@ namespace SensorTagMvvm.ViewModels
         public override void Start()
         {
             base.Start();
-            //TestInternet();
-            GetBluetoothStatus();
+            /*
+             * TODO: Op de presentatie TestInternet() in commentaar zetten en GetBluetoothStatus() uit commentaar zetten
+             * Dit is nodig om de testen te laten slagen maar op de presentatie kan het internet check niet werken
+             * dus uitzetten die handel. Onze API staat niet online dus moet het via een lokaal netwerk draaien.
+             */
+
+            TestInternet();
+            //GetBluetoothStatus();
         }
 
         public IMvxCommand ScanDevicesCommand
